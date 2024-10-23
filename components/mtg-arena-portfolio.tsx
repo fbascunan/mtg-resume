@@ -124,6 +124,9 @@ export function MtgArenaPortfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white font-fantasy">
+      <div className="bg-red-600 text-center p-2">
+        This portfolio is a work in progress
+      </div>
       <header className="p-6 bg-black bg-opacity-50">
         <h1 className="text-4xl font-bold text-center text-blue-300 glow">Planeswalker&apos;s Portfolio</h1>
       </header>
