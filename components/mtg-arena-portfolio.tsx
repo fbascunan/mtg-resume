@@ -153,7 +153,6 @@ export function MtgArenaPortfolio() {
                   <Progress 
                     value={skill.level} 
                     className="h-2 mb-2"
-                    style={{ ['--progress-background' as any]: skill.color }}
                   />
                   <p className="text-sm text-gray-400">{skill.level}% Mastery</p>
                 </CardContent>
@@ -203,7 +202,7 @@ export function MtgArenaPortfolio() {
       </main>
       
       <footer className="mt-12 p-6 bg-black bg-opacity-50 text-center">
-        <p className="text-gray-400">© 2023 Planeswalker's Portfolio. All rights reserved across the multiverse.</p>
+        <p className="text-gray-400">© 2023 Planeswalker&apos;s Portfolio. All rights reserved across the multiverse.</p>
       </footer>
       
       <style jsx global>{`
@@ -219,6 +218,8 @@ export function MtgArenaPortfolio() {
         
         .glow:hover {
           text-shadow: 0 0 20px currentColor;
+          transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+          color: #ffcc00;
         }
       `}</style>
     </div>
