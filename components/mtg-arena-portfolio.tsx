@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Text, PerspectiveCamera } from "@react-three/drei"
 import * as THREE from "three"
+import Image from "next/image"
 
 const skills = [
   { name: "React", level: 90, color: "#61DAFB" },
@@ -132,10 +133,13 @@ export function MtgArenaPortfolio() {
       </header>
       
       <main className="container mx-auto p-6">
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
-          <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow">
-            <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
+        <section className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+          <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile.png" alt="Profile picture" width={500} height={500} />
+          <div className="flex flex-col justify-center col-span-2">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
+            <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow">
+              <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
+            </div>
           </div>
         </section>
         
