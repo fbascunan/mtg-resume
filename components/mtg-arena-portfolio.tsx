@@ -88,11 +88,11 @@ function InteractiveMTGCard() {
       {/* Skill bar */}
       <mesh position={[0, 0.7, 0.11]}>
         <planeGeometry args={[3, 0.2]} />
-        <meshBasicMaterial color={skills[activeSkill].color} />
+        <meshBasicMaterial color="white" />
       </mesh>
       <mesh position={[-1.5 + (skills[activeSkill].level / 100) * 3 / 2, 0.7, 0.12]}>
         <planeGeometry args={[(skills[activeSkill].level / 100) * 3, 0.2]} />
-        <meshBasicMaterial color="white" />
+        <meshBasicMaterial color={skills[activeSkill].color} />
       </mesh>
 
       {/* Instructions */}
