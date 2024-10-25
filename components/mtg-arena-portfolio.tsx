@@ -137,7 +137,7 @@ export function MtgArenaPortfolio() {
           <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
           <div className="flex flex-col justify-center col-span-2">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
-            <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow">
+            <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" style={{height: "100%"}}>
               <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
             </div>
           </div>
@@ -160,6 +160,7 @@ export function MtgArenaPortfolio() {
                   <Progress 
                     value={skill.level} 
                     className="h-2 mb-2"
+                    color={skill.color}
                   />
                   <p className="text-sm text-gray-400">{skill.level}% Mastery</p>
                 </CardContent>
