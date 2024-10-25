@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, Suspense } from "react"
+import { useState, useRef, Suspense, useEffect } from "react"
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -120,6 +120,38 @@ function Scene() {
   )
 }
 
+
+import { ReactNode } from "react";
+
+function FadeInSection({ children }: { children: ReactNode }) {
+  const [isVisible, setVisible] = useState(false)
+  const domRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => setVisible(entry.isIntersecting))
+    })
+    if (domRef.current) {
+      observer.observe(domRef.current)
+    }
+    return () => {
+      if (domRef.current) {
+        observer.unobserve(domRef.current)
+      }
+    }
+  }, [])
+
+  return (
+    <div
+      className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+      ref={domRef}
+    >
+      {children}
+    </div>
+  )
+}
+
 export function MtgArenaPortfolio() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
@@ -131,88 +163,96 @@ export function MtgArenaPortfolio() {
       <header className="p-6 bg-black bg-opacity-50">
         <h1 className="text-4xl font-bold text-center text-blue-300 glow">Planeswalker&apos;s Portfolio</h1>
       </header>
-      
+
       <main className="container mx-auto p-6">
-        <section className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-          <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
-          <div className="flex flex-col justify-center col-span-2">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
-            <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" style={{height: "100%"}}>
-              <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
-            </div>
-          </div>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Mana Pool (Skills)</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill) => (
-              <Card 
-                key={skill.name}
-                className={`bg-black bg-opacity-50 border-2 transition-all duration-300 ease-in-out transform hover:scale-105 ${
-                  hoveredSkill === skill.name ? `border-[${skill.color}] shadow-lg shadow-[${skill.color}]/50` : 'border-gray-700'
-                }`}
-                onMouseEnter={() => setHoveredSkill(skill.name)}
-                onMouseLeave={() => setHoveredSkill(null)}
-              >
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: skill.color }}>{skill.name}</h3>
-                  <Progress 
-                    value={skill.level} 
-                    className="h-2 mb-2"
-                    color={skill.color}
-                  />
-                  <p className="text-sm text-gray-400">{skill.level}% Mastery</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Arcane Artifact (Interactive Skill Card)</h2>
-          <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
-            <Canvas>
-              <Suspense fallback={null}>
-                <Scene />
-              </Suspense>
-            </Canvas>
-          </div>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">My Spellbook (Projects)</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((project) => (
-              <div key={project} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                <h3 className="text-xl font-semibold mb-2 text-purple-300">Project {project}</h3>
-                <p className="text-gray-300 mb-4">A powerful spell that transforms user interactions into seamless experiences.</p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">View Spell →</a>
+        <FadeInSection>
+          <section className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
+            <div className="flex flex-col justify-center col-span-2">
+              <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
+              <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" style={{ height: "100%" }}>
+                <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
               </div>
-            ))}
-          </div>
-        </section>
-        
-        <section>
-          <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Contact the Planeswalker</h2>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
-              <GithubIcon size={24} />
-            </a>
-            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
-              <LinkedinIcon size={24} />
-            </a>
-            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
-              <MailIcon size={24} />
-            </a>
-          </div>
-        </section>
+            </div>
+          </section>
+        </FadeInSection>
+
+        <FadeInSection>
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Mana Pool (Skills)</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skills.map((skill) => (
+                <Card
+                  key={skill.name}
+                  className={`bg-black bg-opacity-50 border-2 transition-all duration-300 ease-in-out transform hover:scale-105 ${hoveredSkill === skill.name ? `border-[${skill.color}] shadow-lg shadow-[${skill.color}]/50` : 'border-gray-700'
+                    }`}
+                  onMouseEnter={() => setHoveredSkill(skill.name)}
+                  onMouseLeave={() => setHoveredSkill(null)}
+                >
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2" style={{ color: skill.color }}>{skill.name}</h3>
+                    <Progress
+                      value={skill.level}
+                      className="h-2 mb-2"
+                      color={skill.color}
+                    />
+                    <p className="text-sm text-gray-400">{skill.level}% Mastery</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+        </FadeInSection>
+        <FadeInSection>
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Arcane Artifact (Interactive Skill Card)</h2>
+            <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
+              <Canvas>
+                <Suspense fallback={null}>
+                  <Scene />
+                </Suspense>
+              </Canvas>
+            </div>
+          </section>
+        </FadeInSection>
+        <FadeInSection>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">My Spellbook (Projects)</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((project) => (
+                <div key={project} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
+                  <h3 className="text-xl font-semibold mb-2 text-purple-300">Project {project}</h3>
+                  <p className="text-gray-300 mb-4">A powerful spell that transforms user interactions into seamless experiences.</p>
+                  <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">View Spell →</a>
+                </div>
+              ))}
+            </div>
+          </section>
+
+        </FadeInSection>
+        <FadeInSection>
+          <section>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Contact the Planeswalker</h2>
+            <div className="flex justify-center space-x-6">
+              <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                <GithubIcon size={24} />
+              </a>
+              <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                <LinkedinIcon size={24} />
+              </a>
+              <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                <MailIcon size={24} />
+              </a>
+            </div>
+          </section>
+        </FadeInSection>
       </main>
-      
+
       <footer className="mt-12 p-6 bg-black bg-opacity-50 text-center">
         <p className="text-gray-400">© 2023 Planeswalker&apos;s Portfolio. All rights reserved across the multiverse.</p>
       </footer>
-      
+
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
         
