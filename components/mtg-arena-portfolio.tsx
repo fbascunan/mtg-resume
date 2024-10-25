@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, Suspense, useEffect } from "react"
+import { useState, useRef, Suspense, useEffect, ReactNode } from "react"
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -120,9 +120,6 @@ function Scene() {
   )
 }
 
-
-import { ReactNode } from "react";
-
 function FadeInSection({ children }: { children: ReactNode }) {
   const [isVisible, setVisible] = useState(false)
   const domRef = useRef<HTMLDivElement>(null)
@@ -143,7 +140,7 @@ function FadeInSection({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'
+      className={`transition-opacity duration-1500 ${isVisible ? 'opacity-100' : 'opacity-0'
         }`}
       ref={domRef}
     >
