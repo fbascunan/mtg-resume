@@ -1,0 +1,33 @@
+{
+  "Index": {
+    "onProgress": "Esta página aún está en construcción. Por favor, no me jusgues!",
+    "title": "Portafolio del Planeswalker",
+    "aboutMe": {
+      "title": "Sobre Mí",
+      "description": "¡Saludos, compañero Planeswalker! Soy un desarrollador experimentado con pasión por crear experiencias digitales mágicas. Mis habilidades abarcan múltiples planos del desarrollo web, desde la hechicería frontend hasta la magia backend."
+    },
+    "skills": {
+      "title": "Reserva de Maná (Habilidades)",
+      "mastery": "Dominio"
+    },
+    "interactiveCard": {
+      "title": "Artefacto Arcano (Tarjeta de Habilidades Interactiva)"
+    },
+    "projects": {
+      "title": "Mi Grimorio (Proyectos)",
+      "project": "Proyecto",
+      "description": "Un poderoso hechizo que transforma las interacciones del usuario en experiencias fluidas.",
+      "viewSpell": "Ver Hechizo"
+    },
+    "contact": {
+      "title": "Contacta al Planeswalker"
+    },
+    "footer": {
+      "copyright": "© 2024 Portafolio de Felipe. Todos los derechos reservados a través del multiverso."
+    }
+  },
+  "InteractiveCard": {
+    "mastery": "Dominio",
+    "instructions": "Clic para cambiar habilidad • Pasa el cursor para rotar"
+  }
+}

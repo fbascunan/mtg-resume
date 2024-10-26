@@ -1,0 +1,33 @@
+{
+  "Index": {
+    "onProgress": "This page is still under construction. Please don't be so rude!",
+    "title": "Planeswalker's Portfolio",
+    "aboutMe": {
+      "title": "About Me",
+      "description": "Greetings, fellow Planeswalker! I'm a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry."
+    },
+    "skills": {
+      "title": "Mana Pool (Skills)",
+      "mastery": "Mastery"
+    },
+    "interactiveCard": {
+      "title": "Arcane Artifact (Interactive Skill Card)"
+    },
+    "projects": {
+      "title": "My Spellbook (Projects)",
+      "project": "Project",
+      "description": "A powerful spell that transforms user interactions into seamless experiences.",
+      "viewSpell": "View Spell"
+    },
+    "contact": {
+      "title": "Contact the Planeswalker"
+    },
+    "footer": {
+      "copyright": "© 2024 Felipe's Portfolio. All rights reserved across the multiverse."
+    }
+  },
+  "InteractiveCard": {
+    "mastery": "Mastery",
+    "instructions": "Click to change skill • Hover to rotate"
+  }
+}

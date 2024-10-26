@@ -10,6 +10,9 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Text, PerspectiveCamera } from "@react-three/drei"
 import * as THREE from "three"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
+import LocaleSwitcher from '@/components/LocaleSwitcher'
+
 
 const skills = [
   { name: "React", level: 90, color: "#61DAFB" },
@@ -20,6 +23,7 @@ const skills = [
 ]
 
 function InteractiveMTGCard() {
+  const t = useTranslations('InteractiveCard')
   const mesh = useRef<THREE.Group>(null!)
   const [hovered, setHovered] = useState(false)
   const [activeSkill, setActiveSkill] = useState(0)
@@ -103,7 +107,7 @@ function InteractiveMTGCard() {
         anchorX="center"
         anchorY="middle"
       >
-        Click to change skill • Hover to rotate
+        {t('instruction')}
       </Text>
     </group>
   )
@@ -150,25 +154,33 @@ function FadeInSection({ children }: { children: ReactNode }) {
 }
 
 export function MtgArenaPortfolio() {
+  const t = useTranslations('Index')
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white font-fantasy">
       <div className="bg-red-600 text-center p-2">
-        This portfolio is a work in progress
+        {t('onProgress')}
       </div>
-      <header className="p-6 bg-black bg-opacity-50">
-        <h1 className="text-4xl font-bold text-center text-blue-300 glow">Planeswalker&apos;s Portfolio</h1>
+      <header className="relative flex items-center justify-center p-6 bg-black bg-opacity-50">
+        <h1 className="text-4xl font-bold text-blue-300 glow">
+          {t('title')}
+        </h1>
+        <div className="absolute right-6">
+          <LocaleSwitcher />
+        </div>
       </header>
+
+
 
       <main className="container mx-auto p-6">
         <FadeInSection>
           <section className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
             <div className="flex flex-col justify-center col-span-2">
-              <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">About Me</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('aboutMe.title')}</h2>
               <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" style={{ height: "100%" }}>
-                <p>Greetings, fellow Planeswalker! I&apos;m a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.</p>
+                <p>{t('aboutMe.description')}</p>
               </div>
             </div>
           </section>
@@ -176,7 +188,7 @@ export function MtgArenaPortfolio() {
 
         <FadeInSection>
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Mana Pool (Skills)</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('skills.title')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill) => (
                 <Card
@@ -202,7 +214,7 @@ export function MtgArenaPortfolio() {
         </FadeInSection>
         <FadeInSection>
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Arcane Artifact (Interactive Skill Card)</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('interactiveCard.title')}</h2>
             <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
               <Canvas>
                 <Suspense fallback={null}>
@@ -215,13 +227,13 @@ export function MtgArenaPortfolio() {
         <FadeInSection>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">My Spellbook (Projects)</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((project) => (
                 <div key={project} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                  <h3 className="text-xl font-semibold mb-2 text-purple-300">Project {project}</h3>
-                  <p className="text-gray-300 mb-4">A powerful spell that transforms user interactions into seamless experiences.</p>
-                  <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">View Spell →</a>
+                  <h3 className="text-xl font-semibold mb-2 text-purple-300">{t('projects.title', { project })}</h3>
+                  <p className="text-gray-300 mb-4">{t('projects.description', { project })}</p>
+                  <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">{t('projects.viewSpell')} →</a>
                 </div>
               ))}
             </div>
@@ -230,7 +242,7 @@ export function MtgArenaPortfolio() {
         </FadeInSection>
         <FadeInSection>
           <section>
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">Contact the Planeswalker</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('contact.title')}</h2>
             <div className="flex justify-center space-x-6">
               <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
                 <GithubIcon size={24} />
@@ -247,7 +259,7 @@ export function MtgArenaPortfolio() {
       </main>
 
       <footer className="mt-12 p-6 bg-black bg-opacity-50 text-center">
-        <p className="text-gray-400">© 2023 Planeswalker&apos;s Portfolio. All rights reserved across the multiverse.</p>
+        <p className="text-gray-400">{t('footer.copyright')}</p>
       </footer>
 
       <style jsx global>{`
