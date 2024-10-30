@@ -17,7 +17,19 @@
       "title": "My Spellbook (Projects)",
       "project": "Project",
       "description": "A powerful spell that transforms user interactions into seamless experiences.",
-      "viewSpell": "View Spell"
+      "viewSpell": "View Spell",
+      "fakeProject": {
+        "title": "My Spellbook (Projects)",
+        "project": "Project",
+        "description": "A powerful spell that transforms user interactions into seamless experiences.",
+        "viewSpell": "View Spell"
+      },
+      "nopBuk": {
+        "title": "No Buk",
+        "project": "Project",
+        "description": "An app for human resources management inspired by buk.",
+        "viewSpell": "View Spell"
+      }
     },
     "contact": {
       "title": "Contact the Planeswalker"

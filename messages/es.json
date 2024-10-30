@@ -14,17 +14,27 @@
       "title": "Artefacto Arcano (Tarjeta de Habilidades Interactiva)"
     },
     "projects": {
-      "title": "Mi Grimorio (Proyectos)",
-      "project": "Proyecto",
-      "description": "Un poderoso hechizo que transforma las interacciones del usuario en experiencias fluidas.",
-      "viewSpell": "Ver Hechizo"
+      "title": "Mi Libro de Hechizos (Proyectos)",
+      "fakeProject": {
+        "title": "Mi Libro de Hechizos (Proyectos)",
+        "project": "Proyecto",
+        "description": "Un hechizo poderoso que transforma las interacciones de los usuarios en experiencias fluidas.",
+        "viewSpell": "Ver Hechizo"
+      },
+      "nopBuk": {
+        "title": "No Buk",
+        "project": "Proyecto",
+        "description": "Una app para la gestión de recursos humanos inspirada en buk.",
+        "viewSpell": "Ver Hechizo"
+      }
     },
     "contact": {
       "title": "Contacta al Planeswalker"
     },
     "footer": {
       "copyright": "© 2024 Portafolio de Felipe. Todos los derechos reservados a través del multiverso."
-    }
+    },
+    "default": "something"
   },
   "InteractiveCard": {
     "mastery": "Dominio",

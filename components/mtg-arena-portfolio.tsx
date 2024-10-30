@@ -22,6 +22,12 @@ const skills = [
   { name: "Python", level: 70, color: "#3776AB" },
 ]
 
+const projects = [
+  { name: "nopBuk", url: "https://melodic-torrone-6f1779.netlify.app/" },
+  { name: "fakeProject", url: "#" },
+  { name: "tic-tac-toe", url: "#" }
+]
+
 function InteractiveMTGCard() {
   const t = useTranslations('InteractiveCard')
   const mesh = useRef<THREE.Group>(null!)
@@ -107,7 +113,7 @@ function InteractiveMTGCard() {
         anchorX="center"
         anchorY="middle"
       >
-        {t('instruction')}
+        {t('instructions')}
       </Text>
     </group>
   )
@@ -154,7 +160,18 @@ function FadeInSection({ children }: { children: ReactNode }) {
 }
 
 export function MtgArenaPortfolio() {
-  const t = useTranslations('Index')
+  const t = (key: string) => {
+    const translator = useTranslations('Index')
+    const translation = translator(key)
+    console.log(translation)
+    console.log(key)
+    if (translation === `Index.${key}`) {
+      console.log(key.split('.'), "the last element:", key.split('.').pop())
+      return key.split('.').pop()
+    }
+    return translation
+  }
+  // const t = useTranslations('Index')
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
   return (
@@ -229,11 +246,11 @@ export function MtgArenaPortfolio() {
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((project) => (
-                <div key={project} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                  <h3 className="text-xl font-semibold mb-2 text-purple-300">{t('projects.title', { project })}</h3>
-                  <p className="text-gray-300 mb-4">{t('projects.description', { project })}</p>
-                  <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">{t('projects.viewSpell')} →</a>
+              {projects.map((project) => (
+                <div key={project.name} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
+                  <h3 className="text-xl font-semibold mb-2 text-purple-300">{t(`projects.${project.name}.title`)}</h3>
+                  <p className="text-gray-300 mb-4">{t(`projects.${project.name}.description`)}</p>
+                  <a href={project.url} className="text-blue-400 hover:text-blue-300 transition-colors duration-300" target="_blank" rel="noopener noreferrer" >{t('projects.viewSpell')} →</a>
                 </div>
               ))}
             </div>
