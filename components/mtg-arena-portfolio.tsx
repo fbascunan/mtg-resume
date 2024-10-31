@@ -23,9 +23,9 @@ const skills = [
 ]
 
 const projects = [
-  { name: "nopBuk", url: "https://melodic-torrone-6f1779.netlify.app/" },
-  { name: "fakeProject", url: "#" },
-  { name: "tic-tac-toe", url: "#" }
+  { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/" },
+  { name: "fakeProject", image: "/profile.png", url: "#" },
+  { name: "tic-tac-toe", image: "/profile_v2.png", url: "#" }
 ]
 
 function InteractiveMTGCard() {
@@ -192,11 +192,11 @@ export function MtgArenaPortfolio() {
 
       <main className="container mx-auto p-6">
         <FadeInSection>
-          <section className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <Image className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
-            <div className="flex flex-col justify-center col-span-2">
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <Image className="bg-black bg-opacity-50 p-0  rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
+            <div className="flex flex-col justify-center md:col-span-2">
               <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('aboutMe.title')}</h2>
-              <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow" style={{ height: "100%" }}>
+              <div className="bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow h-full">
                 <p>{t('aboutMe.description')}</p>
               </div>
             </div>
@@ -247,10 +247,11 @@ export function MtgArenaPortfolio() {
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
-                <div key={project.name} className="bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                  <h3 className="text-xl font-semibold mb-2 text-purple-300">{t(`projects.${project.name}.title`)}</h3>
-                  <p className="text-gray-300 mb-4">{t(`projects.${project.name}.description`)}</p>
-                  <a href={project.url} className="text-blue-400 hover:text-blue-300 transition-colors duration-300" target="_blank" rel="noopener noreferrer" >{t('projects.viewSpell')} →</a>
+                <div key={project.name} className="flex flex-col w-auto bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
+                    <Image className="self-center mb-4 inline max-h-[350px]" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
+                    <h3 className=" mt-auto text-xl font-semibold mb-2 text-purple-300">{t(`projects.${project.name}.title`)}</h3>
+                    <p className="text-gray-300 mb-4">{t(`projects.${project.name}.description`)}</p>
+                    <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{t('projects.viewSpell')} →</a>
                 </div>
               ))}
             </div>
