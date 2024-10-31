@@ -1,10 +1,12 @@
 {
   "Index": {
     "onProgress": "Esta página aún está en construcción. Por favor, no me jusgues!",
-    "title": "Portafolio del Planeswalker",
+    "title": "Portafolio de Felipe",
     "aboutMe": {
       "title": "Sobre Mí",
-      "description": "¡Saludos, compañero Planeswalker! Soy un desarrollador experimentado con pasión por crear experiencias digitales mágicas. Mis habilidades abarcan múltiples planos del desarrollo web, desde la hechicería frontend hasta la magia backend."
+      "description": "¡Saludos, compañero Planeswalker! Soy un desarrollador experimentado con pasión por crear experiencias digitales mágicas. Mis habilidades abarcan múltiples planos del desarrollo web, desde la hechicería frontend hasta la magia backend.",
+      "cvLink": "Ver Currículum",
+      "oneDriveLink": "https://1drv.ms/b/s!Am0k7w2dlSaxk3eyQ1lH8dFSPRVX?e=AL4KXw" 
     },
     "skills": {
       "title": "Reserva de Maná (Habilidades)",

@@ -4,7 +4,9 @@
     "title": "Planeswalker's Portfolio",
     "aboutMe": {
       "title": "About Me",
-      "description": "Greetings, fellow Planeswalker! I'm a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry."
+      "description": "Greetings, fellow Planeswalker! I'm a seasoned developer with a passion for crafting magical digital experiences. My skills span across multiple planes of web development, from frontend sorcery to backend wizardry.",
+      "cvLink": "View Resume",
+      "oneDriveLink": "https://1drv.ms/b/s!Am0k7w2dlSaxk3eyQ1lH8dFSPRVX?e=AL4KXw" 
     },
     "skills": {
       "title": "Mana Pool (Skills)",
