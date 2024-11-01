@@ -17,17 +17,16 @@
     },
     "projects": {
       "title": "Mi Libro de Hechizos (Proyectos)",
+      "viewSpell": "Ver Hechizo",
       "fakeProject": {
         "title": "Mi Libro de Hechizos (Proyectos)",
         "project": "Proyecto",
-        "description": "Un hechizo poderoso que transforma las interacciones de los usuarios en experiencias fluidas.",
-        "viewSpell": "Ver Hechizo"
+        "description": "Un hechizo poderoso que transforma las interacciones de los usuarios en experiencias fluidas."
       },
       "nopBuk": {
         "title": "No Buk",
         "project": "Proyecto",
-        "description": "Una app para la gestión de recursos humanos inspirada en buk.",
-        "viewSpell": "Ver Hechizo"
+        "description": "Una app para la gestión de recursos humanos inspirada en buk."
       }
     },
     "contact": {

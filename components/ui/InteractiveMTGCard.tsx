@@ -1,9 +1,7 @@
 import { useState, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Text, PerspectiveCamera, Texture, useTexture } from "@react-three/drei"
+import { Text, PerspectiveCamera, useTexture } from "@react-three/drei"
 import * as THREE from "three"
-import { useTranslations } from "next-intl"
-import { url } from "inspector"
 
 const skills = [
  
@@ -36,7 +34,6 @@ export default function InteractiveMTGCard() {
 }
 
 function InnerInteractiveMTGCard() {
-  const t = useTranslations('InteractiveCard')
   const mesh = useRef<THREE.Group>(null!)
   const [hovered, setHovered] = useState(false)
   const [activeSkill, setActiveSkill] = useState(0)

@@ -2,7 +2,6 @@ import * as THREE from 'three'
 import { Canvas, extend } from '@react-three/fiber'
 import { useGLTF, MeshPortalMaterial, CameraControls, Text, Sky } from '@react-three/drei'
 import { geometry } from 'maath'
-import { suspend } from 'suspend-react'
 
 extend(geometry)
 const GOLDENRATIO = 1.61803398875
@@ -43,7 +42,7 @@ function Model({ clip, ...props }) {
   )
 }
 
-function Frame({ id, name, author, bg, width = 1, height = GOLDENRATIO, children, ...props }) {
+function Frame({ id, name, author, width = 1, height = GOLDENRATIO, children, ...props }) {
   return (
     <group {...props}>
       <Text color="black" fontSize={0.25} letterSpacing={-0.025} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.375, 0.715, 0.01]}>

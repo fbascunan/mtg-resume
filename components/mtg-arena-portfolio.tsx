@@ -11,7 +11,6 @@ import Image from "next/image"
 import { useTranslations } from "next-intl"
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import InteractiveMTGCard from "@/components/ui/InteractiveMTGCard"
-import TestComponent from "./ui/TestComponent"
 
 const skills = [
   { name: "VueJS", level: 80, color: "#339933" },
@@ -65,27 +64,28 @@ function FadeInSection({ children }: { children: ReactNode }) {
 }
 
 export function MtgArenaPortfolio() {
-  const t = (key: string) => {
-    const translator = useTranslations('Index')
+  
+  const translator = useTranslations('Index')
+  function tt(key: string) {
     const translation = translator(key)
-
+  
     if (translation === `Index.${key}`) {
       console.log(key.split('.'), "the last element:", key.split('.').pop())
       return key.split('.').pop()
     }
     return translation
   }
-
+  
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white font-fantasy">
       <div className="bg-red-600 text-center p-2">
-        {t('onProgress')}
+        {tt('onProgress')}
       </div>
       <header className="relative flex items-center justify-center p-6 bg-black bg-opacity-50">
         <h1 className="text-4xl font-bold text-blue-300 glow">
-          {t('title')}
+          {tt('title')}
         </h1>
         <div className="absolute right-6">
           <LocaleSwitcher />
@@ -97,10 +97,10 @@ export function MtgArenaPortfolio() {
           <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <Image className="bg-black bg-opacity-50 p-0  rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
             <div className="flex flex-col justify-center md:col-span-2">
-              <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('aboutMe.title')}</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('aboutMe.title')}</h2>
               <div className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow h-full">
-                <p>{t('aboutMe.description')}</p>
-                <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={t('aboutMe.oneDriveLink')} target="_blank" rel="noopener noreferrer" >{t('aboutMe.cvLink')} →</a>
+                <p>{tt('aboutMe.description')}</p>
+                <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={tt('aboutMe.oneDriveLink')} target="_blank" rel="noopener noreferrer" >{tt('aboutMe.cvLink')} →</a>
               </div>
             </div>
           </section>
@@ -108,7 +108,7 @@ export function MtgArenaPortfolio() {
 
         <FadeInSection>
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('skills.title')}</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('skills.title')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill) => (
                 <Card
@@ -134,7 +134,7 @@ export function MtgArenaPortfolio() {
         </FadeInSection>
         <FadeInSection>
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('interactiveCard.title')}</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('interactiveCard.title')}</h2>
             <div className="w-full h-[700px] bg-black bg-opacity-5 rounded-lg border-purple-500">
               <Canvas>
                 <Suspense fallback={null}>
@@ -152,14 +152,14 @@ export function MtgArenaPortfolio() {
 
           
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('projects.title')}</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
                 <div key={project.name} className="flex flex-col w-auto bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
                     <Image className="self-center mb-4 inline max-h-[350px]" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
-                    <h3 className=" mt-auto text-xl font-semibold mb-2 text-purple-300">{t(`projects.${project.name}.title`)}</h3>
-                    <p className="text-gray-300 mb-4">{t(`projects.${project.name}.description`)}</p>
-                    <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{t('projects.viewSpell')} →</a>
+                    <h3 className=" mt-auto text-xl font-semibold mb-2 text-purple-300">{tt(`projects.${project.name}.title`)}</h3>
+                    <p className="text-gray-300 mb-4">{tt(`projects.${project.name}.description`)}</p>
+                    <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{tt('projects.viewSpell')} →</a>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export function MtgArenaPortfolio() {
         </FadeInSection>
         <FadeInSection>
           <section>
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('contact.title')}</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('contact.title')}</h2>
             <div className="flex justify-center space-x-8">
               <a href="https://github.com/FelipeAndresBascunanMorales" className="text-blue-400 hover:text-blue-300 transition-colors duration-300" target="_blank">
                 <GithubIcon size={24} /> <span>GitHub</span>
@@ -193,7 +193,7 @@ export function MtgArenaPortfolio() {
       </main>
 
       <footer className="mt-12 p-6 bg-black bg-opacity-50 text-center">
-        <p className="text-gray-400">{t('footer.copyright')}</p>
+        <p className="text-gray-400">{tt('footer.copyright')}</p>
       </footer>
 
       <style jsx global>{`
