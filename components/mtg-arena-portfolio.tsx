@@ -155,11 +155,11 @@ export function MtgArenaPortfolio() {
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
-                <div key={project.name} className="flex flex-col w-auto bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                  <div className="h-[350px] content-center">
-                    <Image className="self-center mb-4 inline max-h-[350px]" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
+                <div key={project.name} className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
+                  <div className="flex h-1/2 mb-6 max-h-[500px]">
+                    <Image className="" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
                   </div>
-                    <h3 className=" mt-auto text-xl font-semibold mb-2 text-purple-300">{tt(`projects.${project.name}.title`)}</h3>
+                    <h3 className=" text-xl font-semibold mb-2 text-purple-300">{tt(`projects.${project.name}.title`)}</h3>
                     <p className="text-gray-300 mb-4">{tt(`projects.${project.name}.description`)}</p>
                     <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{tt('projects.viewSpell')} →</a>
                 </div>
