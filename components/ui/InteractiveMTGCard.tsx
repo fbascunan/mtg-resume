@@ -1,15 +1,16 @@
 import { useState, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Text, PerspectiveCamera } from "@react-three/drei"
+import { Text, PerspectiveCamera, Texture, useTexture } from "@react-three/drei"
 import * as THREE from "three"
 import { useTranslations } from "next-intl"
+import { url } from "inspector"
 
 const skills = [
-  { name: "React", level: 90, color: "#61DAFB" },
-  { name: "TypeScript", level: 85, color: "#3178C6" },
-  { name: "Node.js", level: 80, color: "#339933" },
-  { name: "GraphQL", level: 75, color: "#E10098" },
-  { name: "Python", level: 70, color: "#3776AB" },
+  { name: "React", level: 90, color: "#61DAFB", art: "/github_gitlab.webp", texture: "/ruby_on_rails.webp" },
+  { name: "TypeScript", level: 85, color: "#3178C6", art: "/github_gitlab.webp", texture: "/ruby_on_rails.webp" }, 
+  { name: "Node.js", level: 80, color: "#339933", art: "/github_gitlab.webp", texture: "/ruby_on_rails.webp" },
+  { name: "GraphQL", level: 75, color: "#E10098", art: "/github_gitlab.webp", texture: "/ruby_on_rails.webp" },
+  { name: "Python", level: 70, color: "#3776AB", art: "/github_gitlab.webp", texture: "/ruby_on_rails.webp" }
 ]
 
 export default function InteractiveMTGCard() {
@@ -29,6 +30,8 @@ function InnerInteractiveMTGCard() {
   const [hovered, setHovered] = useState(false)
   const [activeSkill, setActiveSkill] = useState(0)
   const { size } = useThree()
+  const texture = useTexture(skills[activeSkill].texture)
+  const art = useTexture(skills[activeSkill].art)
 
   useFrame((state) => {
     if (!hovered) {
@@ -57,13 +60,13 @@ function InnerInteractiveMTGCard() {
       {/* Glow effect */}
       <mesh position={[0, 0, -0.01]} scale={[1.05, 1.05, 1]}>
         <planeGeometry args={[4, 6]} />
-        <meshBasicMaterial color={skills[activeSkill].color} opacity={0.6} transparent />
+        <meshBasicMaterial map={art} color={skills[activeSkill].color} opacity={0.6} transparent />
       </mesh>
 
       {/* Main card */}
       <mesh>
         <boxGeometry args={[4, 6, 0.2]} />
-        <meshStandardMaterial color={hovered ? 'white' : '#cccccc'} metalness={0.5} roughness={0.5} />
+        <meshStandardMaterial map={texture} color={hovered ? 'white' : '#cccccc'} metalness={0.1} roughness={0.5} />
       </mesh>
 
       {/* Skill name */}

@@ -11,6 +11,7 @@ import Image from "next/image"
 import { useTranslations } from "next-intl"
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import InteractiveMTGCard from "@/components/ui/InteractiveMTGCard"
+import TestComponent from "./ui/TestComponent"
 
 
 const skills = [
@@ -146,6 +147,11 @@ export function MtgArenaPortfolio() {
         </FadeInSection>
         <FadeInSection>
 
+          <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
+            <TestComponent></TestComponent>
+          </div>
+
+          
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('projects.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
