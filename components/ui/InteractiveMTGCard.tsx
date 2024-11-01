@@ -9,17 +9,17 @@ const skills = [
  
   { name: "VueJS", level: 80, color: "#339933", art: "/VueJS_concept_in_Magic_the_Gathering_art_style.webp", texture: "/card_template_blue.png" },
   { name: "React", level: 70, color: "#61DAFB", art: "/Javascript_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
-  { name: "Ruby on Rails", level: 75, color: "#E10098", art: "/ruby_on_rails.webp", texture: "/card_template_blue.png" },
-  { name: "Ruby", level: 80, color: "red", art: "/Ruby_on_Rails_framework_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
-  { name: "GIT, Gitlab & Github", level: 80, color: "orange", art: "/github_gitlab.webp", texture: "/card_template_red.png" },
+  { name: "Ruby on Rails", level: 75, color: "#E10098", art: "/ruby_on_rails.webp", texture: "/card_template_red.png" },
+  { name: "Ruby", level: 80, color: "red", art: "/Ruby_on_Rails_framework_concept_in_an_MTG_art_style.webp", texture: "/card_template_red.png" },
+  { name: "GIT, Gitlab & Github", level: 80, color: "orange", art: "/github_gitlab.webp", texture: "/card_template_white.png" },
   { name: "Python", level: 70, color: "#3776AB", art: "/Python3_card_art_for_a_Magic_the_Gathering_like_game_incorporating_the_Python_logo2.webp", texture: "/card_template_yellow.png" },
-  { name: ".NET", level: 70, color: "blue", art: "/backend_concept_in_Magic_the_Gathering_art_style.webp", texture: "/card_template_yellow.png" },
-  { name: "Azure", level: 60, color: "blue", art: "/Azure_the_cloud_in_Magic_the_Gathering_art_style_with_the_logo.webp", texture: "/card_template_yellow.png" },
+  { name: ".NET", level: 70, color: "blue", art: "/backend_concept_in_Magic_the_Gathering_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "Azure", level: 60, color: "blue", art: "/Azure_the_cloud_in_Magic_the_Gathering_art_style_with_the_logo.webp", texture: "/card_template_blue.png" },
   
   
-  { name: "Docker", level: 50, color: "blue", art: "/Docker_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_yellow.png" },
-  { name: "SQL", level: 70, color: "lightblue", art: "/SQL_concept_in_an_MTG_art_style.webp", texture: "/card_template_red.png" },
-  { name: "Astro", level: 40, color: "orange", art: "/AstroJS_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "Docker", level: 50, color: "blue", art: "/Docker_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_blue.png" },
+  { name: "SQL", level: 70, color: "lightblue", art: "/SQL_concept_in_an_MTG_art_style.webp", texture: "/card_template_yellow.png" },
+  { name: "Astro", level: 40, color: "orange", art: "/AstroJS_concept_in_an_MTG_art_style.webp", texture: "/card_template_yellow.png" },
   { name: "TypeScript", level: 60, color: "#3178C6", art: "/Javascript_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_white.png" },
   { name: "Javascript", level: 70, color: "yellow", art: "/github_gitlab.webp", texture: "/card_template_blue2.png" },
 ]

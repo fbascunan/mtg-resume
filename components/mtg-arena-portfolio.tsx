@@ -13,7 +13,6 @@ import LocaleSwitcher from '@/components/LocaleSwitcher'
 import InteractiveMTGCard from "@/components/ui/InteractiveMTGCard"
 import TestComponent from "./ui/TestComponent"
 
-
 const skills = [
   { name: "VueJS", level: 80, color: "#339933" },
   { name: "React", level: 70, color: "#61DAFB" },
