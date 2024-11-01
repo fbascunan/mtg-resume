@@ -7,21 +7,21 @@ import { url } from "inspector"
 
 const skills = [
  
-  { name: "VueJS", level: 80, color: "#339933", art: "/VueJS_concept_in_Magic_the_Gathering_art_style.webp", texture: "/raw_texture.webp" },
-  { name: "React", level: 70, color: "#61DAFB", art: "/Magic_the_Gathering_style_card_art_for_React_JS_the_library.webp", texture: "/raw_texture.webp" },
-  { name: "Ruby on Rails", level: 75, color: "#E10098", art: "/ruby_on_rails.webp", texture: "/raw_texture.webp" },
-  { name: "Ruby", level: 80, color: "red", art: "/Ruby_on_Rails_framework_concept_in_an_MTG_art_style.webp", texture: "/raw_texture.webp" },
-  { name: "GIT", level: 80, color: "orange", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
-  { name: "Python", level: 70, color: "#3776AB", art: "/Python3_card_art_for_a_Magic_the_Gathering_like_game_incorporating_the_Python_logo.webp", texture: "/raw_texture.webp" },
-  { name: ".NET", level: 70, color: "blue", art: "/backend_concept_in_Magic_the_Gathering_art_style.webp", texture: "/raw_texture.webp" },
-  { name: "Azure", level: 60, color: "blue", art: "/Azure_the_cloud_in_Magic_the_Gathering_art_style_with_the_logo.webp", texture: "/raw_texture.webp" },
+  { name: "VueJS", level: 80, color: "#339933", art: "/VueJS_concept_in_Magic_the_Gathering_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "React", level: 70, color: "#61DAFB", art: "/Javascript_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "Ruby on Rails", level: 75, color: "#E10098", art: "/ruby_on_rails.webp", texture: "/card_template_blue.png" },
+  { name: "Ruby", level: 80, color: "red", art: "/Ruby_on_Rails_framework_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "GIT, Gitlab & Github", level: 80, color: "orange", art: "/github_gitlab.webp", texture: "/card_template_red.png" },
+  { name: "Python", level: 70, color: "#3776AB", art: "/Python3_card_art_for_a_Magic_the_Gathering_like_game_incorporating_the_Python_logo2.webp", texture: "/card_template_yellow.png" },
+  { name: ".NET", level: 70, color: "blue", art: "/backend_concept_in_Magic_the_Gathering_art_style.webp", texture: "/card_template_yellow.png" },
+  { name: "Azure", level: 60, color: "blue", art: "/Azure_the_cloud_in_Magic_the_Gathering_art_style_with_the_logo.webp", texture: "/card_template_yellow.png" },
   
   
-  { name: "TypeScript", level: 60, color: "#3178C6", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
-  { name: "Javascript", level: 70, color: "yellow", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
-  { name: "SQL", level: 70, color: "lightblue", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
-  { name: "Docker", level: 50, color: "blue", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
-  { name: "Astro", level: 40, color: "orange", art: "/github_gitlab.webp", texture: "/raw_texture.webp" },
+  { name: "Docker", level: 50, color: "blue", art: "/Docker_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_yellow.png" },
+  { name: "SQL", level: 70, color: "lightblue", art: "/SQL_concept_in_an_MTG_art_style.webp", texture: "/card_template_red.png" },
+  { name: "Astro", level: 40, color: "orange", art: "/AstroJS_concept_in_an_MTG_art_style.webp", texture: "/card_template_blue.png" },
+  { name: "TypeScript", level: 60, color: "#3178C6", art: "/Javascript_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_white.png" },
+  { name: "Javascript", level: 70, color: "yellow", art: "/github_gitlab.webp", texture: "/card_template_blue2.png" },
 ]
 
 export default function InteractiveMTGCard() {
@@ -44,6 +44,14 @@ function InnerInteractiveMTGCard() {
   const texture = useTexture(skills[activeSkill].texture)
   const art = useTexture(skills[activeSkill].art)
 
+  // Create a new THREE.Color from the original color
+const originalColor = new THREE.Color(skills[activeSkill].color);
+
+// Lighten the color by mixing it with white (1.0 means full white, 0.0 keeps the original color)
+const lightenedColor = originalColor.lerp(new THREE.Color(0xffffff), 0.4); // Adjust the 0.5 to control how much lighter it gets
+
+
+
   useFrame((state) => {
     if (!hovered) {
       mesh.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.2
@@ -62,34 +70,38 @@ function InnerInteractiveMTGCard() {
     }
   }
 
+  const handleClick = () => {
+    setActiveSkill((prevSkill) => (prevSkill + 1) % skills.length)
+  }
+
   return (
     <group
       ref={mesh}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
       onPointerMove={handlePointerMove}
-      onClick={() => setActiveSkill((prevSkill) => (prevSkill + 1) % skills.length)}
+      onClick={handleClick}
     >
       {/* Glow effect */}
-      <mesh position={[0, 0, -0.02]} scale={[1.075, 1.075, 1]}>
+      <mesh position={[0, 0, 0]} scale={[1.075, 1.075, 1]}>
         <planeGeometry args={[4, 6]} />
-        <meshBasicMaterial map={texture} color={`${skills[activeSkill].color}`} opacity={5} />
+        <meshBasicMaterial map={texture} color={lightenedColor} transparent opacity={1}/>
       </mesh>
 
-      {/* Main card */}
-      <mesh position={[0, 1.2, 0]}>
-        <boxGeometry args={[4, 3, 0.2]} />
-        <meshStandardMaterial map={art} color={hovered ? 'white' : '#cccccc'} roughness={1.8}  metalness={3}/>
+      {/* Main art */}
+      <mesh position={[0, 0.8, hovered ? -0.35 : -0.01]}>
+        <boxGeometry args={[4, 3.8, 0]} />
+        <meshStandardMaterial map={art} color={hovered ? 'white' : '#cccccc'} roughness={1.8}  metalness={2.8}/>
       </mesh>
 
       {/* Skill name */}
       <Text
-        position={[-2, 2.9, 0.11]}
-        fontSize={0.25}
-        color="#444444"
+        position={[-1.7, 2.7, 0.03]}
+        fontSize={0.24}
+        color="#111111"
         anchorX="left"
         anchorY="middle"
-        outlineColor={`{skills[activeSkill].color}aa`}
+        outlineColor={`{skills[activeSkill].color}`}
         outlineWidth={0.01}
       >
         {skills[activeSkill].name}
@@ -97,11 +109,13 @@ function InnerInteractiveMTGCard() {
 
       {/* Skill level */}
       <Text
-        position={[0, -1.2, 0.11]}
-        fontSize={0.3}
-        color="white"
+        position={[0, -1.35, 0.11]}
+        fontSize={0.24}
+        color="#111111"
         anchorX="center"
         anchorY="middle"
+        outlineColor={`{skills[activeSkill].color}`}
+        outlineWidth={0.01}
       >
         Mastery: {skills[activeSkill].level}%
       </Text>
