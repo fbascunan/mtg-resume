@@ -136,7 +136,7 @@ export function MtgArenaPortfolio() {
         <FadeInSection>
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{t('interactiveCard.title')}</h2>
-            <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
+            <div className="w-full h-[700px] bg-black bg-opacity-10 rounded-lg border-purple-500">
               <Canvas>
                 <Suspense fallback={null}>
                   <InteractiveMTGCard />
@@ -146,10 +146,10 @@ export function MtgArenaPortfolio() {
           </section>
         </FadeInSection>
         <FadeInSection>
-
+{/* 
           <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
             <TestComponent></TestComponent>
-          </div>
+          </div> */}
 
           
           <section className="mb-12">
