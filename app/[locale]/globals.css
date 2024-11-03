@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+.font-fantasy {
+  font-family: 'Cinzel', monospace;
+}
+
+.glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.glow:hover {
+  text-shadow: 0 0 20px currentColor;
+  transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+  color: #ffcc00;
 }
 
 @layer utilities {

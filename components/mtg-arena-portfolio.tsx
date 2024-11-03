@@ -200,24 +200,6 @@ export function MtgArenaPortfolio() {
       <footer className="mt-12 p-6 bg-black bg-opacity-50 text-center">
         <p className="text-gray-400">{tt('footer.copyright')}</p>
       </footer>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
-        
-        .font-fantasy {
-          font-family: 'Cinzel', serif;
-        }
-        
-        .glow {
-          text-shadow: 0 0 10px currentColor;
-        }
-        
-        .glow:hover {
-          text-shadow: 0 0 20px currentColor;
-          transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
-          color: #ffcc00;
-        }
-      `}</style>
     </div>
   )
 }
