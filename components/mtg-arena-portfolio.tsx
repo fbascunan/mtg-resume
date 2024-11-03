@@ -29,9 +29,9 @@ const skills = [
 ]
 
 const projects = [
-  { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/" },
-  { name: "fakeProject", image: "/glossy_texture_for_a_mythic_card.webp", url: "#" },
-  { name: "tic-tac-toe", image: "/glossy_texture_for_a_mythic_card.webp", url: "#" }
+  { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/", tag: "JustForFun" },
+  { name: "veelo_tu", image: "/veelo_tu.png", url: "https://veelotu.netlify.app/", tag: "Beta" },
+  { name: "tic-tac-toe", image: "/glossy_texture_for_a_mythic_card.webp", url: "#", tag: "JustForFun" },
 ]
 
 function FadeInSection({ children }: { children: ReactNode }) {
@@ -93,6 +93,8 @@ export function MtgArenaPortfolio() {
       </header>
 
       <main className="container mx-auto p-6">
+
+        {/* About Me */}
         <FadeInSection>
           <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <Image className="bg-black bg-opacity-50 p-0  rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
@@ -106,6 +108,41 @@ export function MtgArenaPortfolio() {
           </section>
         </FadeInSection>
 
+        {/* Projects */}
+        <FadeInSection>
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('projects.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
+                <div key={project.name} className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
+                    <h3 className="text-xl font-semibold mb-2 text-purple-300 mb-4">{tt(`projects.${project.name}.title`)}</h3>
+                  <div className="flex h-1/2 mb-6 max-h-[500px]">
+                    <Image className="" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
+                  </div>
+                  <sup className="text-xs text-red-400">{tt(project.tag)}</sup>
+                    <p className="text-gray-300 mb-4">{tt(`projects.${project.name}.description`)}</p>
+                    <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{tt('projects.viewSpell')} →</a>
+                </div>
+              ))}
+            </div>
+          </section>
+        </FadeInSection>
+        
+        {/* 3D Cards */}
+        <FadeInSection>
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('interactiveCard.title')}</h2>
+            <div className="w-full h-[700px] bg-black bg-opacity-5 rounded-lg border-purple-500">
+              <Canvas>
+                <Suspense fallback={null}>
+                  <InteractiveMTGCard />
+                </Suspense>
+              </Canvas>
+            </div>
+          </section>
+        </FadeInSection>
+
+        {/* Skills */}
         <FadeInSection>
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('skills.title')}</h2>
@@ -132,42 +169,8 @@ export function MtgArenaPortfolio() {
             </div>
           </section>
         </FadeInSection>
-        <FadeInSection>
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('interactiveCard.title')}</h2>
-            <div className="w-full h-[700px] bg-black bg-opacity-5 rounded-lg border-purple-500">
-              <Canvas>
-                <Suspense fallback={null}>
-                  <InteractiveMTGCard />
-                </Suspense>
-              </Canvas>
-            </div>
-          </section>
-        </FadeInSection>
-        <FadeInSection>
-{/* 
-          <div className="w-full h-[600px] bg-black bg-opacity-50 rounded-lg border border-purple-500">
-            <TestComponent></TestComponent>
-          </div> */}
 
-          
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('projects.title')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project) => (
-                <div key={project.name} className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                  <div className="flex h-1/2 mb-6 max-h-[500px]">
-                    <Image className="" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
-                  </div>
-                    <h3 className=" text-xl font-semibold mb-2 text-purple-300">{tt(`projects.${project.name}.title`)}</h3>
-                    <p className="text-gray-300 mb-4">{tt(`projects.${project.name}.description`)}</p>
-                    <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{tt('projects.viewSpell')} →</a>
-                </div>
-              ))}
-            </div>
-          </section>
-
-        </FadeInSection>
+        {/* Contact */}
         <FadeInSection>
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('contact.title')}</h2>

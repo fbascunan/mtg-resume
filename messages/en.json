@@ -13,24 +13,22 @@
       "mastery": "Mastery"
     },
     "interactiveCard": {
-      "title": "Arcane Artifact (Interactive Skill Card)"
+      "title": "Unlocked Skill Cards"
     },
     "projects": {
       "title": "My Spellbook (Projects)",
-      "project": "Project",
-      "description": "A powerful spell that transforms user interactions into seamless experiences.",
       "viewSpell": "View Spell",
-      "fakeProject": {
-        "title": "My Spellbook (Projects)",
-        "project": "Project",
-        "description": "A powerful spell that transforms user interactions into seamless experiences.",
-        "viewSpell": "View Spell"
-      },
       "nopBuk": {
-        "title": "No Buk",
-        "project": "Project",
-        "description": "An app for human resources management inspired by buk.",
-        "viewSpell": "View Spell"
+        "title": "Nop Buk",
+        "description": "A human resources management app inspired by buk."
+      },
+      "tic-tac-toe": {
+        "title": "Tic-Tac-Toe",
+        "description": "A tic-tac-toe game as a review of react hooks."
+      },
+      "veelo_tu": {
+        "title": "Veelo Tú",
+        "description": "A documentation website that compiles information from various software integrations."
       }
     },
     "contact": {

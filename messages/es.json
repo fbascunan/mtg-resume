@@ -13,20 +13,22 @@
       "mastery": "Dominio"
     },
     "interactiveCard": {
-      "title": "Artefacto Arcano (Tarjeta de Habilidades Interactiva)"
+      "title": "Cartas de habilidad desbloqueadas"
     },
     "projects": {
       "title": "Mi Libro de Hechizos (Proyectos)",
       "viewSpell": "Ver Hechizo",
-      "fakeProject": {
-        "title": "Mi Libro de Hechizos (Proyectos)",
-        "project": "Proyecto",
-        "description": "Un hechizo poderoso que transforma las interacciones de los usuarios en experiencias fluidas."
-      },
       "nopBuk": {
         "title": "No Buk",
-        "project": "Proyecto",
         "description": "Una app para la gestión de recursos humanos inspirada en buk."
+      },
+      "tic-tac-toe": {
+        "title": "El juego del Gato",
+        "description": "Un juego del gato a modo de repaso de los hooks de react."
+      },
+      "veelo_tu": {
+        "title": "Véelo Tú",
+        "description": "Una web de documentación que recopila información de diversas integraciones de software."
       }
     },
     "contact": {
