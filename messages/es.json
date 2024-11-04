@@ -1,6 +1,6 @@
 {
   "Index": {
-    "onProgress": "Esta página aún está en construcción. Por favor, no me jusgues!",
+    "onProgress": "Esta página aún está en construcción. ¡Por favor, no me juzgues!",
     "title": "Portafolio de Felipe",
     "aboutMe": {
       "title": "Sobre Mí",
@@ -18,9 +18,12 @@
     "projects": {
       "title": "Mi Libro de Hechizos (Proyectos)",
       "viewSpell": "Ver Hechizo",
+      "justForFun": "Solo por diversión",
+      "beta": "En Beta",
+      "internalTool": "Herramienta interna",
       "nopBuk": {
         "title": "No Buk",
-        "description": "Una app para la gestión de recursos humanos inspirada en buk."
+        "description": "Una app para la gestión de recursos humanos inspirada en buk. \n Las vistas están desarrolladas con React y la conexión a la base de datos y gestión de usuarios con Appwrite. \n Las funcionalidades del Backend aún no están terminadas, las iré desarrollando de a poco."
       },
       "tic-tac-toe": {
         "title": "El juego del Gato",
@@ -28,7 +31,11 @@
       },
       "veelo_tu": {
         "title": "Véelo Tú",
-        "description": "Una web de documentación que recopila información de diversas integraciones de software."
+        "description": "Una especie de \"repositorio de integraciones\" que recopila documentación de diversas integraciones de software."
+      },
+      "integrationsAsistant": {
+        "title": "Asistente de integraciones (BUK)",
+        "description": "Generador de código desarrollado con Ruby integrado a un asistente virtual creado en la plataforma de OpenAI. El asistente está personalizado con una base de conocimientos específica del área, puede llamar funciones y generar un archivo .rb a partir de las instrucciones en un archivo Excel."
       }
     },
     "contact": {
@@ -36,8 +43,7 @@
     },
     "footer": {
       "copyright": "© 2024 Portafolio de Felipe. Todos los derechos reservados a través del multiverso."
-    },
-    "default": "something"
+    }
   },
   "InteractiveCard": {
     "mastery": "Dominio",

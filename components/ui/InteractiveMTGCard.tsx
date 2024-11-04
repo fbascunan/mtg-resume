@@ -19,7 +19,7 @@ const skills = [
   { name: "SQL", level: 70, color: "lightblue", art: "/SQL_concept_in_an_MTG_art_style.webp", texture: "/card_template_yellow.png" },
   { name: "Astro", level: 40, color: "orange", art: "/AstroJS_concept_in_an_MTG_art_style.webp", texture: "/card_template_yellow.png" },
   { name: "TypeScript", level: 60, color: "#3178C6", art: "/Javascript_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_white.png" },
-  { name: "Javascript", level: 70, color: "yellow", art: "/github_gitlab.webp", texture: "/card_template_blue2.png" },
+  { name: "Javascript", level: 70, color: "yellow", art: "/js_card.png", texture: "/card_template_yellow.png" },
 ]
 
 export default function InteractiveMTGCard() {

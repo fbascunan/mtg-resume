@@ -18,9 +18,12 @@
     "projects": {
       "title": "My Spellbook (Projects)",
       "viewSpell": "View Spell",
+      "justForFun": "Just for fun",
+      "beta": "Beta",
+      "internalTool": "Internal Tool",
       "nopBuk": {
         "title": "Nop Buk",
-        "description": "A human resources management app inspired by buk."
+        "description": "A human resources management app inspired by buk. \n The views are developed with React and the connection to the database and user management with Appwrite. \n The Backend functionalities are not finished yet, I will develop them little by little."
       },
       "tic-tac-toe": {
         "title": "Tic-Tac-Toe",
@@ -29,6 +32,10 @@
       "veelo_tu": {
         "title": "Veelo Tú",
         "description": "A documentation website that compiles information from various software integrations."
+      },
+      "integrationsAsistant": {
+        "title": "Integrations Assistant (BUK)",
+        "description": "Code generator developed with Ruby integrated into a virtual assistant created on the OpenAI platform. The assistant is customized with a specific knowledge base, can call functions, and generate a .rb file from instructions in an Excel file."
       }
     },
     "contact": {

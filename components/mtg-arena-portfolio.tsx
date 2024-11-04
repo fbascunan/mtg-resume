@@ -29,9 +29,10 @@ const skills = [
 ]
 
 const projects = [
-  { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/", tag: "JustForFun" },
-  { name: "veelo_tu", image: "/veelo_tu.png", url: "https://veelotu.netlify.app/", tag: "Beta" },
-  { name: "tic-tac-toe", image: "/glossy_texture_for_a_mythic_card.webp", url: "#", tag: "JustForFun" },
+  { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/", tag: "justForFun" },
+  { name: "veelo_tu", image: "/veelo_tu.png", url: "https://veelotu.netlify.app/", tag: "beta" },
+  { name: "integrationsAsistant", image: "/Github_space.png", url: "https://github.com/FelipeAndresBascunanMorales/dailybot/", tag: "internalTool" },
+  { name: "tic-tac-toe", image: "/Github_space.png", url: "#", tag: "justForFun" },
 ]
 
 function FadeInSection({ children }: { children: ReactNode }) {
@@ -115,11 +116,11 @@ export function MtgArenaPortfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
                 <div key={project.name} className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-purple-500 hover:border-orange-400 transition-colors duration-300 glow">
-                    <h3 className="text-xl font-semibold mb-2 text-purple-300 mb-4">{tt(`projects.${project.name}.title`)}</h3>
+                    <h3 className="text-xl font-semibold text-purple-300 mb-4">{tt(`projects.${project.name}.title`)}</h3>
                   <div className="flex h-1/2 mb-6 max-h-[500px]">
                     <Image className="" style={{objectFit: "contain"}} src={project.image} alt={project.name} width={500} height={350} />
                   </div>
-                  <sup className="text-xs text-red-400">{tt(project.tag)}</sup>
+                  <sup className="text-xs text-red-400">{tt(`projects.${project.tag}`)}</sup>
                     <p className="text-gray-300 mb-4">{tt(`projects.${project.name}.description`)}</p>
                     <a className=" self-baseline mt-auto mb-0  text-blue-400 hover:text-blue-300 transition-colors duration-300" href={project.url} target="_blank" rel="noopener noreferrer" >{tt('projects.viewSpell')} →</a>
                 </div>
