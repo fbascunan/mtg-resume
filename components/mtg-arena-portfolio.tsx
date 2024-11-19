@@ -132,13 +132,19 @@ export function MtgArenaPortfolio() {
         {/* 3D Cards */}
         <FadeInSection>
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('interactiveCard.title')}</h2>
-            <div className="w-full h-[700px] bg-black bg-opacity-5 rounded-lg border-purple-500">
-              <Canvas>
-                <Suspense fallback={null}>
-                  <InteractiveMTGCard />
-                </Suspense>
-              </Canvas>
+              <div className="flex flex-row">
+                <Image className="pb-4 -translate-y-4" src={"/smoke1.gif"} width={40} height={80} alt={"a little smoke decoration"}></Image>
+                <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('interactiveCard.title')}</h2>
+                <Image className="pb-4 -translate-y-4" src={"/smoke1.gif"} width={40} height={80} alt={"a little smoke decoration"}></Image>
+              </div>
+            <div id="card3d-container" className="">
+              <div className="w-full h-[700px] bg-black bg-opacity-5 rounded-lg border-purple-500 bg-[url('/Magic_the_Gathering_style_card_art_for_React_JS_the_library.webp')]">
+                <Canvas>
+                  <Suspense fallback={null}>
+                    <InteractiveMTGCard />
+                  </Suspense>
+                </Canvas>
+              </div>
             </div>
           </section>
         </FadeInSection>
@@ -173,7 +179,7 @@ export function MtgArenaPortfolio() {
 
         {/* Contact */}
         <FadeInSection>
-          <section>
+          <section className="relative">
             <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('contact.title')}</h2>
             <div className="flex justify-center space-x-8">
               <a href="https://github.com/FelipeAndresBascunanMorales" className="text-blue-400 hover:text-blue-300 transition-colors duration-300" target="_blank">
