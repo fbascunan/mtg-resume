@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useMemo } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import { Text, PerspectiveCamera, useTexture } from "@react-three/drei"
 import * as THREE from "three"
@@ -22,12 +22,25 @@ const skills = [
   { name: "Javascript", level: 70, color: "yellow", art: "/js_card.webp", texture: "/card_template_yellow.webp" },
 ]
 
+// Precompute colors
+const precomputedColors = skills.map(skill => {
+  const originalColor = new THREE.Color(skill.color);
+  return originalColor.lerp(new THREE.Color(0xffffff), 0.4);
+});
+
 export default function InteractiveMTGCard() {
-  return (
+  // Memoize the light setup
+  const lights = useMemo(() => (
     <>
       <ambientLight intensity={0.8} />
       <pointLight position={[10, 10, 10]} />
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+    </>
+  ), []);
+
+  return (
+    <>
+      {lights}
       <InnerInteractiveMTGCard />
     </>
   )
@@ -38,38 +51,73 @@ function InnerInteractiveMTGCard() {
   const [hovered, setHovered] = useState(false)
   const [activeSkill, setActiveSkill] = useState(0)
   const { size } = useThree()
-  const texture = useTexture(skills[activeSkill].texture)
-  const art = useTexture(skills[activeSkill].art)
 
-  // Create a new THREE.Color from the original color
-const originalColor = new THREE.Color(skills[activeSkill].color);
+  // Preload all textures
+  const textures = useTexture(
+    skills.map(skill => skill.texture)
+  );
+  const artTextures = useTexture(
+    skills.map(skill => skill.art)
+  );
 
-// Lighten the color by mixing it with white (1.0 means full white, 0.0 keeps the original color)
-const lightenedColor = originalColor.lerp(new THREE.Color(0xffffff), 0.4); // Adjust the 0.5 to control how much lighter it gets
+  // Memoize current textures
+  const currentTextures = useMemo(() => ({
+    texture: textures[activeSkill],
+    art: artTextures[activeSkill]
+  }), [activeSkill, textures, artTextures]);
 
+  // Memoize geometries
+  const geometries = useMemo(() => ({
+    plane: new THREE.PlaneGeometry(4, 6),
+    box: new THREE.BoxGeometry(4, 3.8, 0),
+    skillBar: new THREE.PlaneGeometry(3, 0.2)
+  }), []);
 
-
+  // Optimize frame updates
   useFrame((state) => {
-    if (!hovered) {
-      mesh.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.2
-      mesh.current.rotation.x = Math.sin(state.clock.getElapsedTime() * 0.3) * 0.1
-      mesh.current.position.z = 0
+    if (!hovered && mesh.current) {
+      const time = state.clock.getElapsedTime();
+      mesh.current.rotation.y = Math.sin(time * 0.5) * 0.2;
+      mesh.current.rotation.x = Math.sin(time * 0.3) * 0.1;
+      mesh.current.position.z = 0;
     }
-  })
+  });
 
-  const handlePointerMove = (e: { clientX: number; clientY: number }) => {
-    if (hovered) {
-      mesh.current.position.z = 2
-      const x = (e.clientX / size.width) * 2 - 1
-      const y = -(e.clientY / size.height) * 1 + 1
-      mesh.current.rotation.y = x * 0.5
-      mesh.current.rotation.x = y * 0.5
-    }
-  }
+  // Memoize event handlers
+  const handlePointerMove = useMemo(() => 
+    (e: { clientX: number; clientY: number }) => {
+      if (hovered && mesh.current) {
+        mesh.current.position.z = 2;
+        const x = (e.clientX / size.width) * 2 - 1;
+        const y = -(e.clientY / size.height) * 1 + 1;
+        mesh.current.rotation.y = x * 0.5;
+        mesh.current.rotation.x = y * 0.5;
+      }
+    }, 
+    [hovered, size]
+  );
 
   const handleClick = () => {
-    setActiveSkill((prevSkill) => (prevSkill + 1) % skills.length)
-  }
+    setActiveSkill((prevSkill) => (prevSkill + 1) % skills.length);
+  };
+
+  // Memoize materials
+  const materials = useMemo(() => ({
+    glow: new THREE.MeshBasicMaterial({
+      map: currentTextures.texture,
+      color: precomputedColors[activeSkill],
+      transparent: true,
+      opacity: 1
+    }),
+    art: new THREE.MeshStandardMaterial({
+      map: currentTextures.art,
+      color: hovered ? '#dfdfdf' : '#cfcfcf',
+      roughness: 1.8,
+      metalness: 2.8
+    }),
+    skillBar: new THREE.MeshBasicMaterial({ color: "white" }),
+    progress: new THREE.MeshBasicMaterial({ color: skills[activeSkill].color })
+  }), [activeSkill, hovered, currentTextures]);
 
   return (
     <group
@@ -80,16 +128,10 @@ const lightenedColor = originalColor.lerp(new THREE.Color(0xffffff), 0.4); // Ad
       onClick={handleClick}
     >
       {/* Glow effect */}
-      <mesh position={[0, 0, 0]} scale={[1.075, 1.075, 1]}>
-        <planeGeometry args={[4, 6]} />
-        <meshBasicMaterial map={texture} color={lightenedColor} transparent opacity={1}/>
-      </mesh>
+      <mesh position={[0, 0, 0]} scale={[1.075, 1.075, 1]} geometry={geometries.plane} material={materials.glow} />
 
       {/* Main art */}
-      <mesh position={[0, 0.8, hovered ? -0.35 : -0.01]}>
-        <boxGeometry args={[4, 3.8, 0]} />
-        <meshStandardMaterial map={art} color={hovered ? 'white' : '#cccccc'} roughness={1.8}  metalness={2.8}/>
-      </mesh>
+      <mesh position={[0, 0.8, hovered ? -0.35 : -0.01]} geometry={geometries.box} material={materials.art} />
 
       {/* Skill name */}
       <Text
@@ -98,7 +140,6 @@ const lightenedColor = originalColor.lerp(new THREE.Color(0xffffff), 0.4); // Ad
         color="#111111"
         anchorX="left"
         anchorY="middle"
-        outlineColor={`{skills[activeSkill].color}`}
         outlineWidth={0.01}
       >
         {skills[activeSkill].name}
@@ -111,32 +152,20 @@ const lightenedColor = originalColor.lerp(new THREE.Color(0xffffff), 0.4); // Ad
         color="#111111"
         anchorX="center"
         anchorY="middle"
-        outlineColor={`{skills[activeSkill].color}`}
         outlineWidth={0.01}
       >
         Mastery: {skills[activeSkill].level}%
       </Text>
 
-      {/* Skill bar */}
-      <mesh position={[0, (-0.7 - 1.2), 0.11]}>
-        <planeGeometry args={[3, 0.2]} />
-        <meshBasicMaterial color="white" />
-      </mesh>
-      <mesh position={[-1.5 + (skills[activeSkill].level / 100) * 3 / 2, (-0.7 - 1.2), 0.12]}>
-        <planeGeometry args={[(skills[activeSkill].level / 100) * 3, 0.2]} />
-        <meshBasicMaterial color={skills[activeSkill].color} />
-      </mesh>
-
-      {/* Instructions
-      <Text
-        position={[0, -2.5, 0.11]}
-        fontSize={0.2}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {t('instructions')}
-      </Text> */}
+      {/* Skill bar background */}
+      <mesh position={[0, -1.9, 0.11]} geometry={geometries.skillBar} material={materials.skillBar} />
+      
+      {/* Skill bar progress */}
+      <mesh 
+        position={[-1.5 + (skills[activeSkill].level / 100) * 3 / 2, -1.9, 0.12]}
+        geometry={new THREE.PlaneGeometry((skills[activeSkill].level / 100) * 3, 0.2)}
+        material={materials.progress}
+      />
     </group>
   )
 }
