@@ -21,6 +21,7 @@
       "justForFun": "Just for fun",
       "beta": "Beta",
       "internalTool": "Internal Tool",
+      "onlineTool": "Online Tool",
       "nopBuk": {
         "title": "Nop Buk",
         "description": "A human resources management app inspired by buk. \n The views are developed with React and the connection to the database and user management with Appwrite. \n The Backend functionalities are not finished yet, I will develop them little by little."
@@ -32,6 +33,10 @@
       "veelo_tu": {
         "title": "Veelo Tú",
         "description": "A documentation website that compiles information from various software integrations."
+      },
+      "sparkle_buttons": {
+        "title": "Sparkle Buttons",
+        "description": "An online tool for creating animated buttons in React. Useful for call-to-action, subscriptions and that kind of buttons. In two words: pleasant buttons!"
       },
       "integrationsAsistant": {
         "title": "Integrations Assistant (BUK)",

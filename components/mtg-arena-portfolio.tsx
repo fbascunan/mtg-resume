@@ -31,8 +31,9 @@ const skills = [
 const projects = [
   { name: "nopBuk", image: "/nopbuk.webp", url: "https://melodic-torrone-6f1779.netlify.app/", tag: "justForFun" },
   { name: "veelo_tu", image: "/veelo_tu.png", url: "https://veelotu.netlify.app/", tag: "beta" },
-  { name: "integrationsAsistant", image: "/Github_space.png", url: "https://github.com/FelipeAndresBascunanMorales/dailybot/", tag: "internalTool" },
-  { name: "tic-tac-toe", image: "/Github_space.png", url: "#", tag: "justForFun" },
+  { name: "sparkle_buttons", image: "/sparkle_buttons.png", url: "https://sparklebuttons.netlify.app", tag: "onlineTool"},
+  { name: "integrationsAsistant", image: "/Github_space.webp", url: "https://github.com/FelipeAndresBascunanMorales/dailybot/", tag: "internalTool" },
+  { name: "tic-tac-toe", image: "/Github_space.webp", url: "#", tag: "justForFun" }
 ]
 
 function FadeInSection({ children }: { children: ReactNode }) {
@@ -98,7 +99,7 @@ export function MtgArenaPortfolio() {
         {/* About Me */}
         <FadeInSection>
           <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <Image className="bg-black bg-opacity-50 p-0  rounded-lg border border-blue-500 glow" src="/profile_v3.png" alt="Profile picture" width={500} height={500} />
+            <Image className="bg-black bg-opacity-50 p-0  rounded-lg border border-blue-500 glow" src="/profile_v3.webp" alt="Profile picture" width={500} height={500} />
             <div className="flex flex-col justify-center md:col-span-2">
               <h2 className="text-2xl font-semibold mb-4 text-orange-400 glow">{tt('aboutMe.title')}</h2>
               <div className="flex flex-col bg-black bg-opacity-50 p-6 rounded-lg border border-blue-500 glow h-full">

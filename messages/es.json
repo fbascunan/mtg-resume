@@ -21,6 +21,7 @@
       "justForFun": "Solo por diversión",
       "beta": "En Beta",
       "internalTool": "Herramienta interna",
+      "onlineTool": "Herramienta online",
       "nopBuk": {
         "title": "No Buk",
         "description": "Una app para la gestión de recursos humanos inspirada en buk. \n Las vistas están desarrolladas con React y la conexión a la base de datos y gestión de usuarios con Appwrite. \n Las funcionalidades del Backend aún no están terminadas, las iré desarrollando de a poco."
@@ -36,6 +37,10 @@
       "integrationsAsistant": {
         "title": "Asistente de integraciones (BUK)",
         "description": "Generador de código desarrollado con Ruby integrado a un asistente virtual creado en la plataforma de OpenAI. El asistente está personalizado con una base de conocimientos específica del área, puede llamar funciones y generar un archivo .rb a partir de las instrucciones en un archivo Excel."
+      },
+      "sparkle_buttons": {
+        "title": "Sparkle Buttons",
+        "description": "Una herramienta en línea para crear botones interactivos en React. Útil para botones de suscripción, call-to-action o cualquier otro botón que deba ser llamativo."
       }
     },
     "contact": {
