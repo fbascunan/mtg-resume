@@ -5,9 +5,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-
-
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'es' }];
@@ -61,7 +59,9 @@ export default async function RootLayout({ children, params: { locale } }: RootL
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
-        </NextIntlClientProvider>      </body>
+        </NextIntlClientProvider>
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
