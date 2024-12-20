@@ -20,6 +20,7 @@ const skills = [
   { name: "Astro", level: 40, color: "orange", art: "/AstroJS_concept_in_an_MTG_art_style.webp", texture: "/card_template_yellow.webp" },
   { name: "TypeScript", level: 60, color: "#3178C6", art: "/Javascript_concept_in_an_MTG_art_style_(1).webp", texture: "/card_template_white.png" },
   { name: "Javascript", level: 70, color: "yellow", art: "/js_card.webp", texture: "/card_template_yellow.webp" },
+  { name: "Next.js", level: 60, color: "gray", art: "/nextjs.jpg", texture: "/card_template_white.png" },
 ]
 
 // Precompute colors

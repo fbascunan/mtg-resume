@@ -41,6 +41,14 @@
       "integrationsAsistant": {
         "title": "Integrations Assistant (BUK)",
         "description": "Code generator developed with Ruby integrated into a virtual assistant created on the OpenAI platform. The assistant is customized with a specific knowledge base, can call functions, and generate a .rb file from instructions in an Excel file."
+      },
+      "crypto_tracker": {
+        "title": "Crypto Tracker",
+        "description": "A simple crypto tracker to see the price of the main cryptocurrencies and a list with the other ones to have in the radar."
+      },
+      "task-generator": {
+        "title": "do not develop my app",
+        "description": "a little bit weird application that wait for a user's prompt as almost all other AI apps do, in this case is to start developing an app, so it will generate a enhanced prompt, a srs, and then, after a little bit of time, it will generate a TREE of tasks. the user can interact with each task using ai features also."
       }
     },
     "contact": {

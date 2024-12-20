@@ -26,6 +26,7 @@ const skills = [
   { name: "GIT", level: 80, color: "orange" },
   { name: "Docker", level: 50, color: "blue" },
   { name: "Astro", level: 40, color: "orange" },
+  { name: "Next.js", level: 60, color: "gray" },
 ]
 
 const projects = [
@@ -33,7 +34,8 @@ const projects = [
   { name: "veelo_tu", image: "/veelo_tu.png", url: "https://veelotu.netlify.app/", tag: "beta" },
   { name: "sparkle_buttons", image: "/sparkle_buttons.png", url: "https://sparklebuttons.netlify.app", tag: "onlineTool"},
   { name: "integrationsAsistant", image: "/Github_space.webp", url: "https://github.com/FelipeAndresBascunanMorales/dailybot/", tag: "internalTool" },
-  { name: "tic-tac-toe", image: "/Github_space.webp", url: "#", tag: "justForFun" }
+  { name: "crypto_tracker", image: "/crypto_tracker.png", url: "https://crypto-advisor.vercel.app/", tag: "justForFun" },
+  { name: "task-generator", image: "/taskgenerator.png", url: "https://donotdevelopmyapp.netlify.app/", tag: "ai" }
 ]
 
 function FadeInSection({ children }: { children: ReactNode }) {

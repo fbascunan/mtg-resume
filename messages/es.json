@@ -26,10 +26,6 @@
         "title": "No Buk",
         "description": "Una app para la gestión de recursos humanos inspirada en buk. \n Las vistas están desarrolladas con React y la conexión a la base de datos y gestión de usuarios con Appwrite. \n Las funcionalidades del Backend aún no están terminadas, las iré desarrollando de a poco."
       },
-      "tic-tac-toe": {
-        "title": "El juego del Gato",
-        "description": "Un juego del gato a modo de repaso de los hooks de react."
-      },
       "veelo_tu": {
         "title": "Véelo Tú",
         "description": "Una especie de \"repositorio de integraciones\" que recopila documentación de diversas integraciones de software."
@@ -41,6 +37,14 @@
       "sparkle_buttons": {
         "title": "Sparkle Buttons",
         "description": "Una herramienta en línea para crear botones interactivos en React. Útil para botones de suscripción, call-to-action o cualquier otro botón que deba ser llamativo."
+      },
+      "crypto_tracker": {
+        "title": "Crypto Tracker",
+        "description": "Un simple tracker de criptomonedas para ver el precio de las principales criptomonedas y otra lista con otras cryptos para tener en radar."
+      },
+      "task-generator": {
+        "title": "do not develop my app",
+        "description": "una aplicación un poco rara que espera un prompt del usuario como casi todas las apps de IA, en este caso es para empezar a desarrollar una app, así que generará un prompt mejorado, un SRS y luego, después de un poco de tiempo, generará un árbol de tareas. el usuario puede interactuar con cada tarea usando funciones de IA también."
       }
     },
     "contact": {
