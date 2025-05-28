@@ -84,9 +84,6 @@ export function MtgArenaPortfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white font-fantasy">
-      <div className="bg-red-600 text-center p-2">
-        {tt('onProgress')}
-      </div>
       <header className="relative flex items-center justify-center p-6 bg-black bg-opacity-50">
         <h1 className="text-4xl font-bold text-blue-300 glow">
           {tt('title')}
